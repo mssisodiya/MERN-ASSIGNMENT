@@ -7,9 +7,13 @@ const albumSchema = new mongoose.Schema({
     required: true,
   
   },
-  userId: {
-    type:Number
+  user: {
+    type : mongoose.Schema.Types.ObjectId,
+    ref: "User"
   }
+  // userId: {
+  //   type:Number
+  // }
 })
 
 const Album = mongoose.model('Album', albumSchema);

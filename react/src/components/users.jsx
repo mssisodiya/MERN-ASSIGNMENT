@@ -24,9 +24,9 @@ const Users = () => {
   </div>
       <ul>
         {
-    users.map((user, index) => (
+    users.map((user) => (
           <li key={user._id}>
-            <Link to={`albums/${index+1}`}>{user.name}</Link>
+            <Link to={`albums/${user._id}`}>{user.name}</Link>
           </li>
         ))}
       </ul>

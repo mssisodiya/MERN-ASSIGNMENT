@@ -31,7 +31,7 @@ function Albums({ match }) {
         <ul>
           {albums.map((album, index) => (
             <li key={album._id}>
-              <Link to={`/photos/${index+1}`}>{album.name}</Link>
+              <Link to={`/photos/${album._id}`}>{album.name}</Link>
             </li>
           ))}
         </ul>

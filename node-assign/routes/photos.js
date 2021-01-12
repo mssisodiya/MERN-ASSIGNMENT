@@ -16,7 +16,6 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.post('/', upload.single('image'), async (req, res) => {
-  
     const url = req.protocol + '://' + req.get('host')
     const photo = new Photo({albumId: req.body.albumId, image: url + '/uploads/' + req.file.filename} )
    const savedphoto =  await photo.save()
@@ -38,7 +37,6 @@ router.get('/:id', async (req, res) => {
 //update photo of a user
 router.put('/:id', async (req, res) => {
   const url = req.protocol + '://' + req.get('host')
-  console.log('req', req.body)
   const album = await Photo.findByIdAndUpdate(req.params.id, req.body, {
     new: true
   });

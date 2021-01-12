@@ -36,11 +36,11 @@ export const setUserPhoto = (photos = null) => {
 
 };
 
-export const addNewPhoto = (data) => {
+export const addNewPhoto = (newPhoto) => {
   return async function (dispatch) {
     const { data: res } = await axios.post(
       `http://localhost:8000/api/photos/`,
-      data
+      newPhoto
     );
     dispatch(addPhoto(res));
     alert("added " + res.image);

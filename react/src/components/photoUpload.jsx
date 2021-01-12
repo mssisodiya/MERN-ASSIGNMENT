@@ -3,24 +3,23 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addNewPhoto } from "../actions/photos";
 
-function PhotoForm({match}) {
-  const [newPhoto, setPhoto] = useState({
+function PhotoForm({ match }) {
+  const [newPhoto] = useState({
     image: "",
-    albumId: match.params.id,
+    // albumId: match.params.id,
   });
   const dispatch = useDispatch();
+  let albumId = match.params.id
 
   let image
-  const handleChange=(e)=> {
-    console.log(e.target.files[0])
+  const handleChange = (e) => {
     image = e.target.files[0]
   }
 
   async function handleSubmit() {
-    const data = new FormData(); 
-      data.append( "image", image ); 
-      data.append('albumId',newPhoto.albumId)
-      console.log('data', data)
+    const data = new FormData();
+    data.append("image", image);
+    data.append('albumId', albumId)
     dispatch(addNewPhoto(data))
   }
 
@@ -33,7 +32,7 @@ function PhotoForm({match}) {
           className="form-control"
           name="image"
           albumid={newPhoto.albumId}
-          value={newPhoto.image}
+          value={image}
           placeholder="Enter photo"
           onChange={handleChange}
         />

@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
-var fs = require('fs');
-var path = require('path');
-var multer = require('multer');
+
 
 const photoSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  albumId : {
-    type: Number
+  albumId: {
+    type : mongoose.Schema.Types.ObjectId,
+    ref: "Album"
   }
 })
 

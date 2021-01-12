@@ -40,7 +40,7 @@ export const setUserAlbum = (albums = null) => {
 export const addNewAlbum = (newAlbum) => {
   return async function (dispatch) {
     const { data: res } = await axios.post(
-      `http://localhost:8000/api/albums/`,
+      `http://localhost:8000/api/albums/${newAlbum.userId}`,
       newAlbum
     );
     dispatch(addAlbum(res));
